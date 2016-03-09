@@ -1,0 +1,6 @@
+neobundle.vim
+neocomplcache
+neosnippet
+neosnippet-snippets
+vim-latex
+vimproc
