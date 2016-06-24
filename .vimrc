@@ -1,7 +1,6 @@
 if $SHELL =~ 'fish'
     set shell=/bin/sh
   endif
-
 " スワップファイルを作成しない
 set noswapfile
   " ビジュアルモードで選択したテキストが、クリップボードに入るようにする
@@ -255,8 +254,11 @@ endif
   NeoBundle 'Shougo/vimproc'
   NeoBundle 'Shougo/neosnippet'
   NeoBundle "Shougo/neosnippet-snippets"
-  NeoBundle "Shougo/neocomplcache"
   NeoBundle 'vim-latex/vim-latex'
+  NeoBundle 'Shougo/unite.vim'
+  NeoBundle 'Shougo/neomru.vim'
+  NeoBundle 'Shougo/neocomplete'
+  NeoBundle 'ujihisa/neco-look'
 
   " 今後このあたりに追加のプラグインをどんどん書いて行きます！！"
   
@@ -300,9 +302,104 @@ endif
   "let g:Tex_ViewRule_pdf = 'firefox -new-window'
   let g:Tex_ViewRule_pdf = 'chromium --new-window'
   let g:Tex_ViewRule_pdf = 'evince'
-   
+  
+  "
+  " unite.vimの設定
+  "
+  " ファイル一覧
+  noremap <C-U><C-F> :Unite -buffer-name=file file<CR>
+  " 最近使ったファイル一覧
+  noremap <C-U><C-R> :Unite file_mru<CR>
+  " ウィンドウを分割して開く
+  au FileType unite nnoremap <silent> <buffer> <expr> <C-i> unite#do_action('split')
+  au FileType unite inoremap <silent> <buffer> <expr> <C-i> unite#do_action('split')
+  " ESCキーを2回押すと終了する
+  au FileType unite nnoremap <silent> <buffer> <ESC><ESC> q
+  au FileType unite inoremap <silent> <buffer> <ESC><ESC> <ESC>q
   call neobundle#end()
     
+  "
+  " neocomplete.vimの設定
+  "
+  if neobundle#tap('neocomplete')
+  call neobundle#config({
+  \   'depends': ['Shougo/context_filetype.vim', 'ujihisa/neco-look', 'pocke/neco-gh-issues', 'Shougo/neco-syntax'],
+  \ })
+
+  " 起動時に有効化
+  let g:neocomplete#enable_at_startup = 1
+  " 大文字が入力されるまで大文字小文字の区別を無視する
+  let g:neocomplete#enable_smart_case = 1
+  " _(アンダースコア)区切りの補完を有効化
+  let g:neocomplete#enable_underbar_completion = 1
+  let g:neocomplete#enable_camel_case_completion  =  1
+  " ポップアップメニューで表示される候補の数
+  let g:neocomplete#max_list = 20
+  " シンタックスをキャッシュするときの最小文字長
+  let g:neocomplete#sources#syntax#min_keyword_length = 3
+  " 補完を表示する最小文字数
+  let g:neocomplete#auto_completion_start_length = 2
+  " preview window を閉じない
+  let g:neocomplete#enable_auto_close_preview = 0
+  autocmd InsertLeave * silent! pclose!
+
+  let g:neocomplete#max_keyword_width = 10000
+
+
+  if !exists('g:neocomplete#delimiter_patterns')
+    let g:neocomplete#delimiter_patterns= {}
+  endif
+  let g:neocomplete#delimiter_patterns.ruby = ['::']
+
+  if !exists('g:neocomplete#same_filetypes')
+    let g:neocomplete#same_filetypes = {}
+  endif
+  let g:neocomplete#same_filetypes.ruby = 'eruby'
+
+
+  if !exists('g:neocomplete#force_omni_input_patterns')
+    let g:neocomplete#force_omni_input_patterns = {}
+  endif
+
+  let g:neocomplete#force_omni_input_patterns.cpp = '[^.[:digit:] *\t]\%(\.\|->\)\w*\|\h\w*::\w*'
+  let g:neocomplete#force_omni_input_patterns.typescript = '[^. \t]\.\%(\h\w*\)\?' " Same as JavaScript
+  let g:neocomplete#force_omni_input_patterns.go = '[^. \t]\.\%(\h\w*\)\?'         " Same as JavaScript
+
+  let s:neco_dicts_dir = $HOME . '/dicts'
+  if isdirectory(s:neco_dicts_dir)
+    let g:neocomplete#sources#dictionary#dictionaries = {
+    \   'ruby': s:neco_dicts_dir . '/ruby.dict',
+    \   'javascript': s:neco_dicts_dir . '/jquery.dict',
+    \ }
+  endif
+  let g:neocomplete#data_directory = $HOME . '/.vim/cache/neocomplete'
+
+  call neocomplete#custom#source('look', 'min_pattern_length', 1)
+
+  call neobundle#untap()
+endif
+
+  "
+  "neco-lookの設定
+  "
+  if !exists('g:neocomplete#text_mode_filetypes')
+      let g:neocomplete#text_mode_filetypes = {}
+  endif
+  let g:neocomplete#text_mode_filetypes = {
+              \ 'rst': 1,
+              \ 'markdown': 1,
+              \ 'gitrebase': 1,
+              \ 'gitcommit': 1,
+              \ 'vcs-commit': 1,
+              \ 'hybrid': 1,
+              \ 'text': 1,
+              \ 'help': 1,
+              \ 'tex': 1,
+              \ }
+
+
+
+
   " Required:
     filetype plugin indent on   
 
