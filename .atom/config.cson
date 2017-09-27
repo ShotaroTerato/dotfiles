@@ -1,0 +1,27 @@
+"*":
+  "autocomplete-plus": {}
+  core:
+    telemetryConsent: "no"
+  editor:
+    confirmCheckoutHeadRevision: false
+    fontFamily: "Ricty Diminished for Powerline"
+    fontSize: 20
+    invisibles: {}
+    showIndentGuide: true
+    showInvisibles: true
+    tabType: "soft"
+  "exception-reporting":
+    userId: "bc4bead2-da57-4aca-96e8-898d14174d91"
+  minimap:
+    plugins:
+      "git-diff": true
+      "git-diffDecorationsZIndex": 0
+      "highlight-selected": true
+      "highlight-selectedDecorationsZIndex": 0
+  "tree-view":
+    hideVcsIgnoredFiles: true
+  welcome:
+    showOnStartup: false
+  whitespace:
+    ensureSingleTrailingNewline: false
+    removeTrailingWhitespace: false

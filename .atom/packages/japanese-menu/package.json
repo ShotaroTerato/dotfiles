@@ -1,0 +1,79 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "/tmp/d-117428-9037-o0urfh.cn8pfu5wmi/package.tgz",
+        "scope": null,
+        "escapedName": null,
+        "name": null,
+        "rawSpec": "/tmp/d-117428-9037-o0urfh.cn8pfu5wmi/package.tgz",
+        "spec": "/tmp/d-117428-9037-o0urfh.cn8pfu5wmi/package.tgz",
+        "type": "local"
+      },
+      "/tmp/apm-install-dir-117428-9037-llvluk.meja4w8kt9"
+    ]
+  ],
+  "_from": "../d-117428-9037-o0urfh.cn8pfu5wmi/package.tgz",
+  "_id": "japanese-menu@1.13.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/japanese-menu",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "/tmp/d-117428-9037-o0urfh.cn8pfu5wmi/package.tgz",
+    "scope": null,
+    "escapedName": null,
+    "name": null,
+    "rawSpec": "/tmp/d-117428-9037-o0urfh.cn8pfu5wmi/package.tgz",
+    "spec": "/tmp/d-117428-9037-o0urfh.cn8pfu5wmi/package.tgz",
+    "type": "local"
+  },
+  "_requiredBy": [
+    "#USER"
+  ],
+  "_resolved": "file:../d-117428-9037-o0urfh.cn8pfu5wmi/package.tgz",
+  "_shasum": "98714b3202bb3bb0aaa0284a0e909279cbd1a084",
+  "_shrinkwrap": null,
+  "_spec": "/tmp/d-117428-9037-o0urfh.cn8pfu5wmi/package.tgz",
+  "_where": "/tmp/apm-install-dir-117428-9037-llvluk.meja4w8kt9",
+  "bugs": {
+    "url": "https://github.com/syon/atom-japanese-menu/issues"
+  },
+  "dependencies": {},
+  "description": "メニューバーとコンテキストメニュー、設定画面を日本語化します。",
+  "devDependencies": {},
+  "engines": {
+    "atom": ">=0.174.0 <2.0.0"
+  },
+  "homepage": "https://github.com/syon/atom-japanese-menu",
+  "license": "MIT",
+  "main": "./lib/main",
+  "name": "japanese-menu",
+  "optionalDependencies": {},
+  "readme": "# Atom - Japanese Menu\n\nAtom のメニューバーとコンテキストメニュー、設定画面を日本語化します。\n\n![screenshot](https://github.com/syon/atom-japanese-menu/raw/master/screenshot.png)\n\n![screenshot](https://github.com/syon/atom-japanese-menu/raw/master/screenshot2.png)\n\n![screenshot](https://github.com/syon/atom-japanese-menu/raw/master/screenshot3.png)\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/syon/atom-japanese-menu.git"
+  },
+  "version": "1.13.0",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".coffee": [
+        "lib/context-menu.coffee",
+        "lib/findandreplace.coffee",
+        "lib/main.coffee",
+        "lib/menu.coffee",
+        "lib/preferences-settings.coffee",
+        "lib/preferences-util.coffee",
+        "lib/preferences.coffee"
+      ],
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}
